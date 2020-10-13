@@ -1,20 +1,27 @@
 import React from 'react';
+import StoreContext from '../StoreContext';
 import { NavLink } from 'react-router-dom';
 
-export default function FolderSidebar(props) {
+export default function FolderSidebar() {
   return (
-    <ul className='Folders'>
-      {props.folders.map(folder =>
-        <NavLink 
-          to={`/folder/${folder.id}`}
-          activeClassName="selected"
-          key={folder.id}
-        >
-          <li key={folder.id}>
-            {folder.name}
-          </li>
-        </NavLink>
-      )}
-    </ul>
+    <StoreContext.Consumer>
+      {(value) => {
+        return (
+          <ul className='Folders'>
+            {value.folders.map(folder =>
+              <NavLink
+                to={`/folder/${folder.id}`}
+                activeClassName="selected"
+                key={folder.id}
+              >
+                <li key={folder.id}>
+                  {folder.name}
+                </li>
+              </NavLink>
+            )}
+          </ul>
+        )
+      }}
+    </StoreContext.Consumer>
   )
 }

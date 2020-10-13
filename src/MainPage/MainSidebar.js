@@ -1,16 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import StoreContext from '../StoreContext';
 
-export default function MainSidebar(props) {
+export default function MainSidebar() {
   return (
-    <ul className='Folders'>
-      {props.folders.map(folder =>
-        <Link to={`/folder/${folder.id}`} key={folder.id}>
-          <li key={folder.id}>
-            {folder.name}
-          </li>
-        </Link>
-      )}
-    </ul>
+    <StoreContext.Consumer>
+      {(value) => {
+        return (
+          <ul className='Folders'>
+            {value.folders.map(folder =>
+              <Link to={`/folder/${folder.id}`} key={folder.id}>
+                <li key={folder.id}>
+                  {folder.name}
+                </li>
+              </Link>
+            )}
+          </ul>
+        )
+      }}
+    </StoreContext.Consumer>
   )
 }
