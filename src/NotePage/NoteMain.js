@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import StoreContext from '../StoreContext'
+import PropTypes from 'prop-types';
 
 export default function NoteMain(props) {
   return (
@@ -24,4 +25,12 @@ export default function NoteMain(props) {
       }}
     </StoreContext.Consumer>
   )
+}
+NoteMain.defaultProps = {
+  match: {
+    params: {}
+  }
+}
+NoteMain.propTypes = {
+  match: PropTypes.any
 }

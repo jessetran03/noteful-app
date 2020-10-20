@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import StoreContext from '../StoreContext';
+import PropTypes from 'prop-types';
 
 export default function NoteSidebar(props) {
   return (
@@ -26,4 +27,12 @@ export default function NoteSidebar(props) {
       }}
     </StoreContext.Consumer>
   )
+}
+NoteSidebar.defaultProps = {
+  match: {
+    params: {}
+  }
+}
+NoteSidebar.propTypes = {
+  match: PropTypes.any
 }

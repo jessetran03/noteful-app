@@ -7,17 +7,22 @@ export default class MainMain extends Component {
   static contextType = StoreContext;
   render() {
     return (
-      <ul className='MainPage'>
-        {this.context.notes.map(note =>
-          <li key={note.id}>
-            <Link to={`/note/${note.id}`}>
-              <h2>{note.name}</h2>
-            </Link>
-            <p>Modified: {moment(note.modified).format('MM-DD-YYYY')}</p>
-            <button onClick={e => this.context.onDeleteNote(note.id)}>Delete</button>
-          </li>
-        )}
-      </ul>
+      <>
+        <ul className='MainPage'>
+          {this.context.notes.map(note =>
+            <li key={note.id}>
+              <Link to={`/note/${note.id}`}>
+                <h2>{note.name}</h2>
+              </Link>
+              <p>Modified: {moment(note.modified).format('MM-DD-YYYY')}</p>
+              <button onClick={e => this.context.onDeleteNote(note.id)}>Delete</button>
+            </li>
+          )}
+        </ul>
+        <Link to={`/add-note`}>
+          <button>Add Note</button>
+        </Link>
+      </>
     )
   }
 }
